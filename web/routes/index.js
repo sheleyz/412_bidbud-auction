@@ -40,7 +40,7 @@ router.get('/', async (req, res, next) => {
 router.get('/view', async (req, res, next) => {
     // Get a snapshot that represents a single auction item
     const auctionItemSnapshot = await firestore.collection('auction_items').doc(req.query.id).get();
-    const itemBidsSnapshot = await firestore.collection('auction_items').doc(req.query.id).collection('bids').get();
+    // const itemBidsSnapshot = await firestore.collection('auction_items').doc(req.query.id).collection('bids').get();
 
     console.log(`Auction Item ID: ${auctionItemSnapshot.id}`);
     console.log(`Auction Item title: ${auctionItemSnapshot.data().title}`);
@@ -56,17 +56,17 @@ router.get('/view', async (req, res, next) => {
     //     auctionItems.push(auctionItem);
     // });
 
-    // Make a local array of auction item bids
-    itemBids = [];
-    auctionItemsSnapshot.forEach(bid => {
-        console.log(`Bidder email: ${bid.data().email} - Bid amount: ${bid.data().amount}`);
+    // // Make a local array of auction item bids
+    // itemBids = [];
+    // auctionItemsSnapshot.forEach(bid => {
+    //     console.log(`Bidder Email: ${bid.data().email} - Current Bid: ${bid.data().current_bid}`);
 
-        // Create a local auction item bid object
-        itemBid = bid.data();
-        itemBids.push(itemBid);
-    });
+    //     // Create a local auction item bid object
+    //     itemBid = bid.data();
+    //     itemBids.push(itemBid);
+    // });
 
-    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist, bidlist: itemBids });
+    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist }); // bidlist: itemBids
 });
 
 module.exports = router;

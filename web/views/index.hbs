@@ -1,2 +1,17 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+<div class="auctionItemsWrapper">
+    {{#each itemlist}}
+    <div class="auctionItem">
+        <h3>{{title}}</h3>
+        <p>Auction Item ID: {{id}}</p>
+        {{!-- <p>{{description}}</p> --}}
+        <p>Artist: {{artist}}</p>
+        {{!-- <p>About the Artist: {{about_artist}}</p> --}}
+        <p>Medium: {{medium}}</p>
+        <p>Size: {{size}}</p>
+        <p>Current Bid: ${{current_bid}}</p>
+    </div>
+    {{/each}}
+</div>
