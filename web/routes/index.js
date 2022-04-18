@@ -42,19 +42,8 @@ router.get('/view', async (req, res, next) => {
     const auctionItemSnapshot = await firestore.collection('auction_items').doc(req.query.id).get();
     // const itemBidsSnapshot = await firestore.collection('auction_items').doc(req.query.id).collection('bids').get();
 
-    console.log(`Auction Item ID: ${auctionItemSnapshot.id}`);
-    console.log(`Auction Item title: ${auctionItemSnapshot.data().title}`);
-
-    // // Loop through the snapshot and write out the title of each item
-    // auctionItemSnapshot.forEach(item => {
-    //     console.log(`Auction Item ID: ${item.id}`);
-    //     console.log(`Auction Item title: ${item.data().title}`);
-
-    //     // Create a local auction item object
-    //     auctionItem = item.data();
-    //     auctionItem.id = item.id;
-    //     auctionItems.push(auctionItem);
-    // });
+    // console.log(`Auction Item ID: ${auctionItemSnapshot.id}`);
+    // console.log(`Auction Item title: ${auctionItemSnapshot.data().title}`);
 
     // // Make a local array of auction item bids
     // itemBids = [];
