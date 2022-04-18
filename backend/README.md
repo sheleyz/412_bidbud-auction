@@ -1,1 +1,0 @@
-# BidBud Silent Auction Backend
