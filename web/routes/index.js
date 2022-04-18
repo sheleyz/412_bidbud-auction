@@ -20,7 +20,7 @@ const firestore = new Firestore();
 /* GET listing of all auction items. */
 router.get('/', async (req, res, next) => {
     // Get a snapshot that represents all auction items
-    const auctionItemsSnapshot = await firestore.collection('auction_items').get();
+    const auctionItemsSnapshot = await firestore.collection('auction_items').orderBy('current_bid').get();
 
     // Make a local array of auction items
     auctionItems = [];
@@ -55,7 +55,7 @@ router.get('/view', async (req, res, next) => {
     //     itemBids.push(itemBid);
     // });
 
-    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist }); // bidlist: itemBids
+    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist, currentbid: auctionItemSnapshot.data().current_bid }); // bidlist: itemBids
 });
 
 module.exports = router;
