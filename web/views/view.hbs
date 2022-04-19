@@ -12,3 +12,13 @@
     <li>Bid ID: {{bidID}} - ${{current_bid}}</a></li>
     {{/each}}
 </ul> --}}
+
+<h3>Make a New Bid: ${{nextBid}}</h3>
+<form action="/makebid" method="POST">
+    <input type="hidden" name="itemID" value="{{itemid}}">
+    <input type="hidden" name="newBid" value="{{nextBid}}">
+    <label for="email">Email Address:</label>
+    <input type="text" name="email">
+    <br>
+    <input type="submit" value="Bid ${{nextBid}}">
+</form>
