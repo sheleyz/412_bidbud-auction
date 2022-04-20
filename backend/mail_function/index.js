@@ -5,7 +5,7 @@ exports.sendMail = (event, context) => {
     userBid = {};
 
     userBid.email = event.value.fields.email.stringValue;
-    userBid.bid_amount = event.value.fields.bid_amount.stringValue;
+    userBid.bid_amount = event.value.fields.amount.integerValue;
     userBid.item_id = event.value.fields.itemID.stringValue;
 
     // API KEY
@@ -13,8 +13,7 @@ exports.sendMail = (event, context) => {
 
     // Prep Email
 
-    const mailText = "A new bid has been made for $" + userBid.bid_amount + " on Item " + userBid.item_id;    
-    
+    const mailText = "A new bid has been made for $" + userBid.bid_amount + " on Item #: " + userBid.item_id;    
     
     const msg = {
         to: userBid.email,
@@ -24,8 +23,7 @@ exports.sendMail = (event, context) => {
         html: mailText
     };     
     
-    // Send Email
-    
+    // Send Email    
     sgMail
     .send(msg)
     .then(() =>{}, error => {
