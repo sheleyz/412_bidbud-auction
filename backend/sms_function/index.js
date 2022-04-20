@@ -6,11 +6,16 @@ exports.sendSMS = (event, context) => {
 
     userInfo = {};
     
+    try{
     userInfo.bid_amount = event.value.fields.amount.integerValue;
     userInfo.item_id = event.value.fields.itemID.stringValue;
-    userInfo.phone_number = event.value.fields.phone_number.stringValue;          
+    userInfo.phone_number = event.value.fields.phone_number.stringValue;
+    }
+    catch(err){
+        console.log(err);
+    }          
 
-    const txtMsg = "A new bid has been made for $" + userInfo.bid_amount + " on Item #: " + userInfo.item_id;    
+    const txtMsg = "A new bid has been made for $" + userInfo.bid_amount + " on Item #: " + userInfo.item_id + ". Link to item: " + "https://sp22-41200-final.uc.r.appspot.com/view?id=" + userInfo.item_id;     
     userInfo.phone_number = userInfo.phone_number.replace('(','').replace(')','').replace('-','');
     const toNumber = "+1" + userInfo.phone_number.replace('-','');        
 
