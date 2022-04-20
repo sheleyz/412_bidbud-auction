@@ -31,6 +31,7 @@ router.get('/', async (req, res, next) => {
         // Create a local auction item object
         auctionItem = item.data();
         auctionItem.id = item.id;
+        auctionItem.image = `https://storage.googleapis.com/sp22-final-image-bucket/${item.id}.jpeg`;
         auctionItems.push(auctionItem);
     });
 
@@ -56,6 +57,8 @@ router.get('/view', async (req, res, next) => {
         itemBids.push(itemBid);
     });
 
+    let auctionItemImage = `https://storage.googleapis.com/sp22-final-image-bucket/${auctionItemSnapshot.id}.jpeg`;
+
     let nextBid;
     try {
         nextBid = Number(itemBids[0].amount) + 10;
@@ -64,7 +67,7 @@ router.get('/view', async (req, res, next) => {
     }
 
     // bidlist: itemBids
-    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist, currentbid: auctionItemSnapshot.data().current_bid, nextBid: nextBid });
+    res.render('view', { itemid: auctionItemSnapshot.id, artist: auctionItemSnapshot.data().artist, title: auctionItemSnapshot.data().title, medium: auctionItemSnapshot.data().medium, size: auctionItemSnapshot.data().size, description: auctionItemSnapshot.data().description, aboutartist: auctionItemSnapshot.data().about_artist, currentbid: auctionItemSnapshot.data().current_bid, image: auctionItemImage, nextBid: nextBid });
 });
 
 /* POST to make a new bid */
