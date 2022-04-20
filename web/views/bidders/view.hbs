@@ -1,0 +1,12 @@
+<h1><img src="{{userImage}}" alt="User Profile Image"> {{displayName}}'s Profile</h1>
+
+<h3>{{displayName}}'s Bids:</h3>
+<ul>
+    {{#if userBidList}}
+    {{#each userBidList}}
+    <li>Bid for Item ID: {{itemID}} | Amount: ${{amount}}</a></li>
+    {{/each}}
+    {{else}}
+    <li>No bids</li>
+    {{/if}}
+</ul>

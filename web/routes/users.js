@@ -16,7 +16,7 @@ router.get('/', async function (req, res, next) {
         console.log(loggedInUser);
 
         // Get user's bids
-        const userBidsSnapshot = await firestore.collection('users').doc(req.user.providerID).collection('bids').orderBy('amount', 'desc').get();
+        const userBidsSnapshot = await firestore.collection('users').doc(req.user.email).collection('bids').orderBy('amount', 'desc').get();
 
         // Make a local array of auction item bids
         userBids = [];

@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+
+<div class="biddersWrapper">
+    {{#each biddersList}}
+    <div class="bidder">
+        <a href="bidders/view?email={{email}}">
+            <h3>{{displayName}}</h3>
+        </a>
+        <img src="{{picture}}" alt="User Profile Image" width="150px">
+    </div>
+    {{/each}}
+</div>
