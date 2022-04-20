@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
     // Get a snapshot that represents all auction items
     // Ordering and Limiting Data: https://cloud.google.com/firestore/docs/query-data/order-limit-data#node.js
     const auctionItemsSnapshot = await firestore.collection('auction_items').orderBy('current_bid').get();
+    const bidsTotalSnapshot = await firestore.collection('bid_info').doc('totals').get();
 
     // Make a local array of auction items
     auctionItems = [];
@@ -35,7 +36,7 @@ router.get('/', async (req, res, next) => {
         auctionItems.push(auctionItem);
     });
 
-    res.render('index', { title: "BidBud", itemlist: auctionItems });
+    res.render('index', { title: "BidBud", itemlist: auctionItems, total: bidsTotalSnapshot.data().bid_total });
 });
 
 /* GET view of a single auction item. */
@@ -90,6 +91,10 @@ router.post('/makebid', ensureAuthenticated, async (req, res, next) => {
 
     await firestore.collection('auction_items').doc(req.body.itemID).update({ current_bid: myBid.amount });
     console.log('Updated current_bid for auction item.');
+
+    await firestore.collection('bid_info').doc('totals').update({ bid_total: Firestore.FieldValue.increment(10) });
+    console.log('Updated bid_total for all auction items.');
+
     res.render('submitted', { title: "Bid Submitted Successfully", itemlist: auctionItems });
 });
 
