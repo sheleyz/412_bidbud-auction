@@ -7,15 +7,21 @@
     "dev": "nodemon --watch"
   },
   "dependencies": {
+    "@google-cloud/connect-firestore": "^2.0.2",
     "@google-cloud/firestore": "^5.0.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
     "express": "~4.16.1",
     "express-handlebars": "^6.0.5",
+    "express-session": "^1.17.2",
     "handlebars-helpers": "^0.9.8",
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.5.2",
+    "passport-google-oauth": "^2.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

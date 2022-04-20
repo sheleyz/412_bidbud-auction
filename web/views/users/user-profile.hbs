@@ -1,0 +1,16 @@
+<h1><img src="{{userImage}}" alt="User Profile Image"> {{displayName}}'s Profile</h1>
+
+<p>{{email}}</p>
+
+<h3>My Bids:</h3>
+<ul>
+    {{#if userBidList}}
+    {{#each userBidList}}
+    <li>Bid for Item ID: {{itemID}} | Amount: ${{amount}}</a></li>
+    {{/each}}
+    {{else}}
+    <li>No bids</li>
+    {{/if}}
+</ul>
+
+<p><a href="/users/logout">Logout</a></p>
