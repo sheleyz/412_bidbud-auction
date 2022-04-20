@@ -22,7 +22,11 @@ async function setupDatabase() {
     // Add the auction item to the database
     await firestore.collection('auction_items').doc(itemIDString).set(itemObject)           
     
-  });   
+  }); 
+  
+  const bidObject = getBidInfoObject();
+
+  await firestore.collection('bid_info').doc('totals').set(bidObject)
   
 }
 
@@ -40,9 +44,20 @@ const getItemObject = (item) => {
     itemData.description = item.description;
     itemData.about_artist = item.about_artist;
     itemData.current_bid = 0;
+    itemData.bid_total = 0;
     
     return itemData;
-  }
+}
+
+const getBidInfoObject = () => {    
+   
+    // Create a JSON object for bid data
+    bidData = {};    
+    
+    bidData.bid_total = 0;
+    
+    return bidData;
+}
 
 
 // Main Call
