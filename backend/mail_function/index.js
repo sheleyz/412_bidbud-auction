@@ -13,7 +13,7 @@ exports.sendMail = (event, context) => {
 
     // Prep Email
 
-    const mailText = "A new bid has been made for $" + userBid.bid_amount + " on Item #: " + userBid.item_id;    
+    const mailText = "A new bid has been made for $" + userBid.bid_amount + " on Item #: " + userBid.item_id + ". Link to item: " + "https://sp22-41200-final.uc.r.appspot.com/view?id=" + userBid.item_id;    
     
     const msg = {
         to: userBid.email,
