@@ -23,7 +23,7 @@ passport.use(new GoogleStrategy({
             providerProfile: profile
         }
 
-        await firestore.collection('users').doc(profile.id).set(newUser);
+        await firestore.collection('users').doc(newUser.email).set(newUser);
         cb(null, newUser);
     })
 );

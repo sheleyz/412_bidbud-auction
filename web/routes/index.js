@@ -85,7 +85,7 @@ router.post('/makebid', ensureAuthenticated, async (req, res, next) => {
     await firestore.collection('auction_items').doc(req.body.itemID).collection('bids').add(myBid);
     console.log('Added bid to Firestore - auction_items.');
 
-    await firestore.collection('users').doc(req.user.providerID).collection('bids').add(myBid);
+    await firestore.collection('users').doc(req.user.email).collection('bids').add(myBid);
     console.log('Added bid to Firestore - users.');
 
     await firestore.collection('auction_items').doc(req.body.itemID).update({ current_bid: myBid.amount });
