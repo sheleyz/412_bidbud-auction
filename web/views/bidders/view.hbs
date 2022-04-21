@@ -4,7 +4,7 @@
 <ul>
     {{#if userBidList}}
     {{#each userBidList}}
-    <li>Bid for Item ID: {{itemID}} | Amount: ${{amount}}</a></li>
+    <li>Bid for Item ID: <a href="/view?id={{itemID}}">{{itemID}}</a> | Amount: ${{amount}}</a></li>
     {{/each}}
     {{else}}
     <li>No bids</li>

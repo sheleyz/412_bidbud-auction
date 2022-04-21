@@ -79,6 +79,7 @@ router.post('/makebid', ensureAuthenticated, async (req, res, next) => {
     const myBid = {
         itemID: req.body.itemID,
         email: req.user.email,
+        phone_number: req.body.phone,
         amount: Number(req.body.newBid)
     };
 

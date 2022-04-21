@@ -5,17 +5,21 @@
 <div class="auctionItemsWrapper">
     {{#each itemlist}}
     <div class="auctionItem">
-        <a href="view?id={{id}}">
-            <h3>{{title}}</h3>
-        </a>
-        <p>Auction Item ID: {{id}}</p>
-        <img src="{{image}}" alt="{{title}}" width="250px">
+        <div style="height: 70px; text-align: center;">
+            <a href="view?id={{id}}">
+                <h3>{{title}}</h3>
+            </a>
+        </div>
+        {{!-- <p>Auction Item ID: {{id}}</p> --}}
+        <div style="display: flex; justify-content: center; margin: 10px 0px;">
+            <img src="{{image}}" alt="{{title}}" width="250px">
+        </div>
         {{!-- <p>{{description}}</p> --}}
         <p>Artist: {{artist}}</p>
         {{!-- <p>About the Artist: {{about_artist}}</p> --}}
         <p>Medium: {{medium}}</p>
         <p>Size: {{size}}</p>
-        <p>Current Bid: ${{current_bid}}</p>
+        <p><strong>Current Bid: ${{current_bid}}</strong></p>
     </div>
     {{/each}}
 </div>

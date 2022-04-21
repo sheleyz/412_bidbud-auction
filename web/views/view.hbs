@@ -1,12 +1,14 @@
 <h1>{{title}}</h1>
 <p>Auction Item ID: {{itemid}}</p>
-<img src="{{image}}" alt="{{title}}" width="250px">
+<div style="margin: 10px 0px;">
+    <img src="{{image}}" alt="{{title}}" width="250px">
+</div>
 <p>{{description}}</p>
 <p>Artist: {{artist}}</p>
 <p>About the Artist: {{aboutartist}}</p>
 <p>Medium: {{medium}}</p>
 <p>Size: {{size}}</p>
-<p>Current Bid: ${{currentbid}}</p>
+<p><strong>Current Bid: ${{currentbid}}</strong></p>
 
 <h3>Make a New Bid: ${{nextBid}}</h3>
 <form action="/makebid" method="POST">
@@ -14,6 +16,10 @@
     <input type="hidden" name="newBid" value="{{nextBid}}">
     {{!-- <label for="email">Email Address:</label>
     <input type="text" name="email"> --}}
-    <br>
+    <div style="margin: 10px 0px;">
+        <label for="phone">Phone number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <small>Format: 123-456-7890</small>
+    </div>
     <input type="submit" value="Bid ${{nextBid}}">
 </form>
