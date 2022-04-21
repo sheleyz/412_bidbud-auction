@@ -43,8 +43,7 @@ const getItemObject = (item) => {
     itemData.size = item.size;
     itemData.description = item.description;
     itemData.about_artist = item.about_artist;
-    itemData.current_bid = 0;
-    itemData.bid_total = 0;
+    itemData.current_bid = 0;    
     
     return itemData;
 }
